@@ -5,7 +5,15 @@ namespace App\DTO;
 use App\Http\Requests\ProductFilterRequest;
 
 /**
- *
+ * @param string|null $query
+ * @param float|null $priceFrom
+ * @param float|null $priceTo
+ * @param int|null $categoryId
+ * @param bool|null $inStock
+ * @param float|null $ratingFrom
+ * @param string $sort
+ * @param int $page
+ * @param int $perPage
  */
 readonly class ProductFilterDTO
 {
