@@ -18,7 +18,7 @@ use App\Http\Requests\ProductFilterRequest;
 readonly class ProductFilterDTO
 {
     public function __construct(
-        public ?string $q = null,
+        public ?string $query = null,
         public ?float $priceFrom = null,
         public ?float $priceTo = null,
         public ?int $categoryId = null,
@@ -32,7 +32,7 @@ readonly class ProductFilterDTO
     public static function fromRequest(ProductFilterRequest $request): self
     {
         return new self(
-            q: $request->input('q'),
+            query: $request->input('q'),
             priceFrom: $request->input('price_from'),
             priceTo: $request->input('price_to'),
             categoryId: $request->filled('category_id') ? $request->integer('category_id') : null,

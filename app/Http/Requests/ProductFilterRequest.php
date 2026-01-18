@@ -32,7 +32,7 @@ class ProductFilterRequest extends FormRequest
             'rating_from' => ['nullable', 'numeric', 'min:0', 'max:5'],
             'sort' => ['nullable', 'in:price_desc,price_asc,rating_desc,newest'],
             'page' => ['nullable', 'integer', 'min:1'],
-            'per_page' => ['nullable', 'integer', 'min:10', 'max:100'],
+            'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
         ];
     }
 
@@ -55,7 +55,7 @@ class ProductFilterRequest extends FormRequest
                 'success' => false,
                 'message' => 'Validation errors',
                 'errors' => $validator->errors(),
-            ], 400)
+            ], 422)
         );
     }
 }

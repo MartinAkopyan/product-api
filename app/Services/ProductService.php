@@ -25,8 +25,8 @@ class ProductService
     {
         $query = Product::query()->with('category');
 
-        if ($filters->q !== null) {
-            $query->whereFullText('name', $filters->q);
+        if ($filters->query !== null) {
+            $query->whereFullText('name', $filters->query);
         }
 
         if ($filters->priceFrom !== null) {

@@ -23,7 +23,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->fullText('name');
-            $table->index('category_id');
             $table->index('price');
             $table->index('rating');
             $table->index('in_stock');
