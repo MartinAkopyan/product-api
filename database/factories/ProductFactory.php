@@ -50,12 +50,16 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $createdAt = fake()->dateTimeBetween('-365 days', 'now');
+
         return [
             'name' => fake()->randomElement($this->prefixes) . ' ' . fake()->word(),
             'price' => fake()->randomFloat(2, 9.99, 1999.99),
-            'category_id' => Category::factory(),
+            'category_id' => 1,
             'in_stock' => fake()->boolean(80),
             'rating' => fake()->randomFloat(1, 0, 5),
+            'created_at' => $createdAt,
+            'updated_at' => fake()->dateTimeBetween($createdAt, 'now'),
         ];
     }
 
