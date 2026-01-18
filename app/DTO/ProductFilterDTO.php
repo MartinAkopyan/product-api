@@ -40,7 +40,7 @@ readonly class ProductFilterDTO
             ratingFrom: $request->input('rating_from'),
             sort: $request->input('sort', 'newest'),
             page: $request->input('page', 1),
-            perPage: $request->input('perPage', 15),
+            perPage: $request->input('per_page', 15),
         );
     }
 }

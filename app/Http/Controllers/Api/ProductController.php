@@ -6,11 +6,8 @@ use App\DTO\ProductFilterDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductFilterRequest;
 use App\Http\Resources\ProductResource;
-use App\Models\Product;
 use App\Services\ProductService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Benchmark;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
