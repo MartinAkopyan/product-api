@@ -35,12 +35,12 @@ readonly class ProductFilterDTO
             q: $request->input('q'),
             priceFrom: $request->input('price_from'),
             priceTo: $request->input('price_to'),
-            categoryId: $request->input('category_id'),
+            categoryId: $request->filled('category_id') ? $request->integer('category_id') : null,
             inStock: $request->input('in_stock'),
             ratingFrom: $request->input('rating_from'),
-            sort: $request->input('sort'),
-            page: $request->input('page'),
-            perPage: $request->input('perPage'),
+            sort: $request->input('sort', 'newest'),
+            page: $request->input('page', 1),
+            perPage: $request->input('perPage', 15),
         );
     }
 }

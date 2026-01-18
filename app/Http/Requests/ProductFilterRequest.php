@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
 
 class ProductFilterRequest extends FormRequest
 {
@@ -32,5 +34,28 @@ class ProductFilterRequest extends FormRequest
             'page' => ['nullable', 'integer', 'min:1'],
             'per_page' => ['nullable', 'integer', 'min:15', 'max:100'],
         ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'q' => 'search query',
+            'price_from' => 'minimum price',
+            'price_to' => 'maximum price',
+            'category_id' => 'category',
+            'in_stock' => 'stock status',
+            'rating_from' => 'minimum rating',
+        ];
+    }
+
+    protected function failedValidation(Validator $validator): void
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'success' => false,
+                'message' => 'Validation errors',
+                'errors' => $validator->errors(),
+            ], 400)
+        );
     }
 }
